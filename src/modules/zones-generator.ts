@@ -520,7 +520,7 @@ class ZonesModule {
       });
     }
 
-    const name = `${getAdjective(Names.getCultureShort(cells.culture[startCell]))} Avalanche`;
+    const name = `${getAdjective("Geographical")} Avalanche`;
     pack.zones.push({
       i: pack.zones.length,
       name,
@@ -557,7 +557,7 @@ class ZonesModule {
       });
     }
 
-    const name = `${getAdjective(Names.getCultureShort(cells.culture[startCell]))} Fault`;
+    const name = `${getAdjective("Geographical")} Fault`;
     pack.zones.push({
       i: pack.zones.length,
       name,
@@ -654,7 +654,7 @@ class ZonesModule {
       });
     }
 
-    const name = `${getAdjective(Names.getCultureShort(cells.culture[startCell]))} Tsunami`;
+    const name = `${getAdjective("Geographical")} Tsunami`;
     pack.zones.push({
       i: pack.zones.length,
       name,

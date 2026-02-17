@@ -24,9 +24,8 @@ export class LakesModule {
   }
 
   getName(feature: PackedGraphFeature): string {
-    const landCell = feature.shoreline[0];
-    const culture = pack.cells.culture[landCell];
-    return Names.getCulture(culture);
+    // Generate simple lake name without culture dependency
+    return `Lake ${feature.i}`;
   }
 
   cleanupLakeData = () => {

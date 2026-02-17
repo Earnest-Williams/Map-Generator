@@ -491,6 +491,12 @@ function toggleStates(event) {
 function drawStates() {
   TIME && console.time("drawStates");
   const {cells, states} = pack;
+  
+  // Fantasy feature removed - skip if states don't exist
+  if (!states || !states.length) {
+    TIME && console.timeEnd("drawStates");
+    return;
+  }
 
   const maxLength = states.length - 1;
   const bodyPaths = new Array(maxLength);
