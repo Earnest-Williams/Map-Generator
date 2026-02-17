@@ -155,7 +155,7 @@ let options = {
   stateLabelsMode: "auto",
   showBurgPreview: true,
   burgs: {
-    groups: JSON.safeParse(localStorage.getItem("burg-groups")) || Burgs.getDefaultGroups()
+    groups: [] // Burgs feature removed
   }
 };
 
@@ -163,7 +163,7 @@ let options = {
 let style = {burgLabels: {}, burgIcons: {}, anchors: {}};
 
 let biomesData = Biomes.getDefault();
-let nameBases = Names.getNameBases(); // cultures-related data
+let nameBases = []; // Names feature removed - cultures-related data
 let color = d3.scaleSequential(d3.interpolateSpectral); // default color scheme
 const lineGen = d3.line().curve(d3.curveBasis); // d3 line generator with default curve interpolation
 
@@ -635,30 +635,28 @@ async function generate(options) {
     Ice.generate();
 
     rankCells();
-    Cultures.generate();
-    Cultures.expand();
-
-    Burgs.generate();
-    States.generate();
-    Routes.generate();
-    Religions.generate();
-
-    Burgs.specify();
-    States.collectStatistics();
-    States.defineStateForms();
-
-    Provinces.generate();
-    Provinces.getPoles();
+    // Fantasy features removed: Cultures, Burgs, States, Routes, Religions, Provinces, Military
+    // Cultures.generate();
+    // Cultures.expand();
+    // Burgs.generate();
+    // States.generate();
+    // Routes.generate();
+    // Religions.generate();
+    // Burgs.specify();
+    // States.collectStatistics();
+    // States.defineStateForms();
+    // Provinces.generate();
+    // Provinces.getPoles();
 
     Rivers.specify();
     Lakes.defineNames();
 
-    Military.generate();
+    // Military.generate(); // Fantasy feature removed
     Markers.generate();
     Zones.generate();
 
     drawScaleBar(scaleBar, scale);
-    Names.getMapName();
+    // Names.getMapName(); // Fantasy feature removed - depends on cultures
 
     WARN && console.warn(`TOTAL: ${rn((performance.now() - timeStart) / 1000, 2)}s`);
     showStatistics();
@@ -1220,13 +1218,8 @@ function showStatistics() {
     Template: ${isRandomTemplate}${heightmapType}
     Points: ${grid.points.length}
     Cells: ${pack.cells.i.length}
-    Map size: ${mapSizeOutput.value}%
-    States: ${pack.states.length - 1}
-    Provinces: ${pack.provinces.length - 1}
-    Burgs: ${pack.burgs.length - 1}
-    Religions: ${pack.religions.length - 1}
-    Culture set: ${culturesSet.value}
-    Cultures: ${pack.cultures.length - 1}`;
+    Map size: ${mapSizeOutput.value}%`;
+    // Fantasy statistics removed: States, Provinces, Burgs, Religions, Cultures
 
   mapId = Date.now(); // unique map id is it's creation date number
   window.mapId = mapId; // expose for test automation
