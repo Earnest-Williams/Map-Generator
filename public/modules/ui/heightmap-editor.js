@@ -546,7 +546,7 @@ function editHeightmap(options) {
     if (!noStat) {
       updateStatistics();
       if (byId("preview")) drawHeightmapPreview(); // update heightmap preview if opened
-      if (byId("canvas3d")) ThreeD.redraw(); // update 3d heightmap preview if opened
+      if (byId("canvas3d") && window.ThreeD?.redraw) ThreeD.redraw(); // update 3d heightmap preview if opened
     }
   }
 
@@ -561,7 +561,7 @@ function editHeightmap(options) {
     updateStatistics();
 
     if (byId("preview")) drawHeightmapPreview(); // update heightmap preview if opened
-    if (byId("canvas3d")) ThreeD.redraw(); // update 3d heightmap preview if opened
+    if (byId("canvas3d") && window.ThreeD?.redraw) ThreeD.redraw(); // update 3d heightmap preview if opened
   }
 
   // restart edits from 1st step
@@ -1097,7 +1097,7 @@ function editHeightmap(options) {
       updateStatistics();
       mockHeightmap();
       if (byId("preview")) drawHeightmapPreview(); // update heightmap preview if opened
-      if (byId("canvas3d")) ThreeD.redraw(); // update 3d heightmap preview if opened
+      if (byId("canvas3d") && window.ThreeD?.redraw) ThreeD.redraw(); // update 3d heightmap preview if opened
     }
 
     function downloadTemplate() {

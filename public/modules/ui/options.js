@@ -960,13 +960,18 @@ function enterStandardView() {
   viewStandard.classList.add("pressed");
 
   if (!byId("canvas3d")) return;
-  ThreeD.stop();
+  if (window.ThreeD?.stop) ThreeD.stop();
   byId("canvas3d").remove();
   if (options3dUpdate.offsetParent) $("#options3d").dialog("close");
   if (preview3d.offsetParent) $("#preview3d").dialog("close");
 }
 
 async function enter3dView(type) {
+  if (!window.ThreeD) {
+    console.warn("3D functionality is not available");
+    return;
+  }
+  
   const canvas = document.createElement("canvas");
   canvas.id = "canvas3d";
   canvas.dataset.type = type;
@@ -1007,6 +1012,8 @@ async function enter3dView(type) {
 }
 
 function resize3d() {
+  if (!window.ThreeD?.redraw) return;
+  
   const canvas = byId("canvas3d");
   canvas.width = parseFloat(preview3d.style.width);
   canvas.height = parseFloat(preview3d.style.height) - 2;
@@ -1014,6 +1021,11 @@ function resize3d() {
 }
 
 function toggle3dOptions() {
+  if (!window.ThreeD) {
+    console.warn("3D functionality is not available");
+    return;
+  }
+  
   if (options3dUpdate.offsetParent) {
     $("#options3d").dialog("close");
     return;
