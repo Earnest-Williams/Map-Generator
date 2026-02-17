@@ -12,7 +12,8 @@ RUN npm ci
 # Copy source code
 COPY ./src ./src
 COPY ./public ./public
-COPY vite.config.js .
+COPY vite.config.ts .
+COPY tsconfig.json .
 
 # Build the application
 RUN npm run build
