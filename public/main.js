@@ -1244,7 +1244,7 @@ const regenerateMap = debounce(async function (options) {
   undraw();
   await generate(options);
   drawLayers();
-  if (ThreeD.options.isOn) ThreeD.redraw();
+  if (window.ThreeD?.options?.isOn) ThreeD.redraw();
   if ($("#worldConfigurator").is(":visible")) editWorld();
 
   fitMapToScreen();
