@@ -651,9 +651,10 @@ async function generate(options) {
     Rivers.specify();
     Lakes.defineNames();
 
-    // Military.generate(); // Fantasy feature removed
-    Markers.generate();
-    Zones.generate();
+    // Fantasy features removed or temporarily disabled:
+    // Military.generate();
+    // Markers.generate(); // Depends on burgs
+    // Zones.generate(); // Depends on burgs and routes
 
     drawScaleBar(scaleBar, scale);
     // Names.getMapName(); // Fantasy feature removed - depends on cultures
