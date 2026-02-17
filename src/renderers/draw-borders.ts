@@ -6,6 +6,13 @@ const bordersRenderer = () => {
   TIME && console.time("drawBorders");
   const { cells, vertices } = pack;
 
+  // Exit early if states/provinces don't exist (stripped from this version)
+  if (!cells.state || !cells.province) {
+    svg.select("#borders").selectAll("path").remove();
+    TIME && console.timeEnd("drawBorders");
+    return;
+  }
+
   const statePath: string[] = [];
   const provincePath: string[] = [];
   const checked: { [key: string]: boolean } = {};
