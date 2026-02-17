@@ -561,7 +561,9 @@ class RiverModule {
   }
 
   getName(cell: number) {
-    return Names.getCulture(pack.cells.culture[cell]);
+    // Generate simple river name without culture dependency
+    const river = pack.rivers.find((r) => r.cells && r.cells.includes(cell));
+    return river ? `River ${river.i}` : `River ${cell}`;
   }
 
   getType({ i, length, parent }: River) {

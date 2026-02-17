@@ -1,5 +1,4 @@
 import type { Selection } from "d3";
-import type { NameBase } from "../modules/names-generator";
 import type { PackedGraph } from "./PackedGraph";
 
 declare global {
@@ -20,7 +19,7 @@ declare global {
   var urbanDensity: number;
   var urbanization: number;
   var distanceScale: number;
-  var nameBases: NameBase[];
+  var nameBases: any[]; // legacy, not used
 
   var pointsInput: HTMLInputElement;
   var culturesInput: HTMLInputElement;

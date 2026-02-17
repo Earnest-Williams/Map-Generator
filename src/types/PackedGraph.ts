@@ -1,10 +1,5 @@
-import type { Burg } from "../modules/burgs-generator";
-import type { Culture } from "../modules/cultures-generator";
 import type { PackedGraphFeature } from "../modules/features";
-import type { Province } from "../modules/provinces-generator";
 import type { River } from "../modules/river-generator";
-import type { Route } from "../modules/routes-generator";
-import type { State } from "../modules/states-generator";
 import type { Zone } from "../modules/zones-generator";
 
 type TypedArray =
@@ -34,14 +29,14 @@ export interface PackedGraph {
     conf: TypedArray; // cell water confidence
     haven: TypedArray; // cell is a haven
     g: number[]; // cell ground type
-    culture: number[]; // cell culture id
+    culture: number[]; // cell culture id (legacy, not used)
     biome: TypedArray; // cell biome id
-    harbor: TypedArray; // cell harbour presence
-    burg: TypedArray; // cell burg id
-    religion: TypedArray; // cell religion id
-    state: number[]; // cell state id
+    harbor: TypedArray; // cell harbour presence (legacy, not used)
+    burg: TypedArray; // cell burg id (legacy, not used)
+    religion: TypedArray; // cell religion id (legacy, not used)
+    state: number[]; // cell state id (legacy, not used)
     area: TypedArray; // cell area
-    province: TypedArray; // cell province id
+    province: TypedArray; // cell province id (legacy, not used)
     routes: Record<number, Record<number, number>>;
   };
   vertices: {
@@ -54,13 +49,13 @@ export interface PackedGraph {
   };
   rivers: River[];
   features: PackedGraphFeature[];
-  burgs: Burg[];
-  states: State[];
-  cultures: Culture[];
-  routes: Route[];
-  religions: any[];
+  burgs: any[]; // legacy, not used
+  states: any[]; // legacy, not used
+  cultures: any[]; // legacy, not used
+  routes: any[]; // legacy, not used
+  religions: any[]; // legacy, not used
   zones: Zone[];
   markers: any[];
   ice: any[];
-  provinces: Province[];
+  provinces: any[]; // legacy, not used
 }
